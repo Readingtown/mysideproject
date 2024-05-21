@@ -4,6 +4,9 @@ This project sets up a database for managing auto parts, inventory, customers, a
 The database is created using MySQL and includes tables for parts, inventory, customers, and orders. 
 
 ## Database Structure
+![Autopart stock management ERD diagram](https://github.com/Readingtown/mysql-scripts/assets/167072737/ddbe345d-e32a-4c45-9f7a-af3c1e18ed86)
+
+
 
 ### Tables
 
@@ -34,7 +37,7 @@ The database is created using MySQL and includes tables for parts, inventory, cu
 
 ### Sample Data
 
-The database is pre-populated with sample data for parts, inventory, customers, and orders.
+The database is pre-produce with sample data for parts, inventory, customers, and orders.
 
 **Parts:**
 - `Window Regulator`, `Durable Window Regulator`, `$50.99`
@@ -42,9 +45,9 @@ The database is pre-populated with sample data for parts, inventory, customers, 
 - `Door Handle`, `Chrome Door Handle`, `$15.00`
 
 **Inventory:**
-- Part ID 1, Quantity 100, Threshold 20
-- Part ID 2, Quantity 200, Threshold 50
-- Part ID 3, Quantity 150, Threshold 30
+- `Part ID 1`, `Quantity 100`, `Threshold 20`
+- `Part ID 2`, `Quantity 200`, `Threshold 50`
+- `Part ID 3`, `Quantity 150`, `Threshold 30`
 
 **Customers:**
 - `Scott Williams`, `ScottWilliams@autozone.com`
@@ -152,7 +155,7 @@ GROUP BY part_id;
 3. Run the queries to manage and analyze auto parts inventory, sales, and forecast prediction.
 
 ### License
-This project is licensed under the MIT License.
+This project is licensed under the ARIEL KUO YU SHAN License.
 
 
 ### Author
