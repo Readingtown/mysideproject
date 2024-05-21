@@ -93,8 +93,11 @@ CREATE TABLE Orders (
     FOREIGN KEY (part_id) REFERENCES Parts(part_id)
 );
 
+```
 
--- Insert Sample Data
+### Insert Sample Data
+
+```sql
 
 INSERT INTO Parts (part_name, part_description, price) VALUES
 ('Window Regulator', 'Durable Window Regulator', 50.99),
@@ -114,25 +117,44 @@ INSERT INTO Orders (customer_id, part_id, order_date, quantity, status) VALUES
 (1, 1, '2024-03-21', 5, 'Shipped'),
 (2, 2, '2024-04-20', 10, 'Pending');
 
+```
 
--- Check for Low Inventory:
+ ### Check for Low Inventory:
 
+```sql
 SELECT Parts.part_name, Inventory.quantity
 FROM Inventory
 INNER JOIN Parts ON Inventory.part_id = Parts.part_id
 WHERE Inventory.quantity < Inventory.threshold;
 
--- Generate Sales Report:
+```
 
+### Generate Sales Report:
+```sql
 SELECT Parts.part_name, SUM(Orders.quantity) AS total_sold
 FROM Orders
 LEFT JOIN Parts ON Orders.part_id = Parts.part_id
 GROUP BY Parts.part_name;
+```
 
--- Yearly Demand Forecast:
-
+### Yearly Demand Forecast:
+```sql
 SELECT part_id, 
 FLOOR(AVG(quantity)) AS avg_monthly_sales
 FROM Orders
 WHERE order_date > DATE_SUB(CURDATE(), INTERVAL 1 YEAR)
 GROUP BY part_id;
+```
+
+### Usage
+1. Create the database and tables using the provided SQL scripts.
+2. Insert the sample data.
+3. Run the queries to manage and analyze auto parts inventory, sales, and forecast prediction.
+
+### License
+This project is licensed under the MIT License.
+
+
+### Author
+ARIEL KUO YU SHAN
+
