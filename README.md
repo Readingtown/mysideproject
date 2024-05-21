@@ -136,15 +136,3 @@ FLOOR(AVG(quantity)) AS avg_monthly_sales
 FROM Orders
 WHERE order_date > DATE_SUB(CURDATE(), INTERVAL 1 YEAR)
 GROUP BY part_id;
-
-Usage
-1. Create the database and tables using the provided SQL scripts.
-2. Insert the sample data.
-3. Run the queries to manage and analyze your auto parts inventory, sales, and customer orders.
-
-License
-This project is licensed under the MIT License.
-
-Author
-ARIEL KUO
-
