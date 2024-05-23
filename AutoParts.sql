@@ -69,3 +69,32 @@ FROM Orders
 WHERE order_date > DATE_SUB(CURDATE(), INTERVAL 1 YEAR)
 GROUP BY part_id;
 
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+from sqlalchemy import create_engine
+
+
+# 創建 SQLAlchemy 引擎
+engine = create_engine('mysql+pymysql://username:password@localhost:portnumber/AutoPartsDB')
+
+# 定義 SQL 查詢
+data = "SELECT part_name, SUM(quantity) AS total_sold 
+	FROM Orders 
+	INNER JOIN Parts 
+	ON Orders.part_id = Parts.part_id 
+	GROUP BY part_name"
+
+
+# 使用 Pandas 讀取資料庫中的資料
+df = pd.read_sql(data, engine)
+	
+# 使用matplotlib製作圖表
+plt.figure(figsize=(10, 6))
+sns.barplot(x='part_name', y='total_sold', data=df)
+plt.title('Sales Quantity',fontsize =24)
+plt.xlabel('Part Name',fontsize =16)
+plt.ylabel('Total Sold',fontsize =16)
+plt.savefig("Sales Quantity")
+plt.show()
+
