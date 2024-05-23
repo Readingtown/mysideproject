@@ -149,6 +149,47 @@ WHERE order_date > DATE_SUB(CURDATE(), INTERVAL 1 YEAR)
 GROUP BY part_id;
 ```
 
+# Insert data to matplotlib and create bar chart
+```python
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+from sqlalchemy import create_engine
+```
+
+### Create SQLAlchemy Engine
+```python
+engine = create_engine('mysql+pymysql://username:password@localhost:portnumber/AutoPartsDB')
+```
+
+### Define SQL query
+```python
+data = "SELECT part_name, SUM(quantity) AS total_sold 
+	FROM Orders 
+	INNER JOIN Parts 
+	ON Orders.part_id = Parts.part_id 
+	GROUP BY part_name"
+```
+
+
+### Use Pandas to read data from SQL
+```python
+df = pd.read_sql(data, engine)
+```
+
+### Use matplotlib to create barchart
+```python
+plt.figure(figsize=(10, 6))
+sns.barplot(x='part_name', y='total_sold', data=df)
+plt.title('Sales Quantity',fontsize =24)
+plt.xlabel('Part Name',fontsize =16)
+plt.ylabel('Total Sold',fontsize =16)
+plt.savefig("Sales Quantity")
+plt.show()
+```
+## Bar chart 
+![Sales Quantity](https://github.com/Readingtown/mysideproject/assets/167072737/54c14dc3-c388-4291-a5ae-383576103bfc)
+
 ### Usage
 1. Create the database and tables using the provided SQL scripts.
 2. Insert the sample data.
